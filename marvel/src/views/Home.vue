@@ -2,16 +2,16 @@
   <div class="home">
     <h1>This is an HOME page</h1>
 
-    <Inicio></Inicio>
+    <Home_Marvel></Home_Marvel>
 
   </div>
 </template>
 <script>
 
-import  Inicio from '../components/Home_Marvel.vue'
+import  Home_Marvel from '../components/Home_Marvel.vue'
 export default {
 components:{
-Inicio
+Home_Marvel
   }
 }
 </script>

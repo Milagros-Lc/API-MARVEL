@@ -30,7 +30,9 @@
                 <router-link to="/" class="nav-link active">Inicio</router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/Heroes" @click="getHeros" class="nav-link">Héroes</router-link>
+                <router-link to="/Heroes" @click="getHeros" class="nav-link"
+                  >Héroes</router-link
+                >
               </li>
             </ul>
             <form class="d-flex">
@@ -46,6 +48,7 @@
         </div>
       </nav>
     </div>
+    <div id="listar"></div>
   </div>
   <router-view />
 </template>
@@ -55,20 +58,57 @@
 
 
 <script>
-/* import axios from 'axios'; */
 const urlAPI =
-  "https://gateway.marvel.com:443/v1/public/characters?apikey=8db15b8ddd57ce424cfbd8ed525bd7f8";
-
+  "https://gateway.marvel.com:443/v1/public/characters?limit=100&apikey=8db15b8ddd57ce424cfbd8ed525bd7f8";
 export default {
-  
+  //const arrayHeros=[];
+
+
   methods: {
     getHeros: function () {
-      console.log("acaaaaaaaaaaaaaaaaa");
-      fetch(urlAPI)
-        .then((res) => res.json())
-        .then((json) => {
-          console.log(json, "RES.JSON");
-        });
+/*       window.onscroll = () => {
+      let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight ===document.documentElement.offsetHeight;
+
+      if (bottomOfWindow) {
+ */
+        fetch(urlAPI)
+          .then((res) => res.json())
+          .then((json) => {
+            console.log(json, "RES.JSON");
+            let contentHtml = "";
+            for (const hero of json.data.results) {
+
+
+              const dateString = new Date(hero.modified);
+              const dateDia =
+                dateString.getDate() + "-" + (dateString.getMonth() + 1) + "-" + dateString.getFullYear();
+
+              contentHtml += `
+                <div class="row-sm-3">
+                    <div class="card" style="width: 18rem;">
+                        <img   src="${hero.thumbnail.path}.${hero.thumbnail.extension}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                <h5 class="card-title">${hero.name}</h5>
+                  <p> ${dateDia}</p>
+                  <p> ${hero.description}</p>
+                    </div>
+                  </div>
+                </div>
+                    `;
+            }
+
+
+console.log(contentHtml);
+
+            
+/* 
+            let divHeros = document.querySelector("#heros");
+            console.log("divheros",divHeros);
+            divHeros.innerHTML = contentHtml;  */
+
+          });
+    /*   }
+      } */
     },
   },
 };

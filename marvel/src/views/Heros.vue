@@ -1,19 +1,16 @@
 <template>
-  <div class="heroes">
+  <div class="heroes" id="heros">
     <h1>This is an HEROES page</h1>
-    <Heros_Marvel ></Heros_Marvel>
-    <ListHeros_Marvel></ListHeros_Marvel>
+   
+   <Results></Results>
   </div>
 </template>
 <script>
-import Heros_Marvel from "../components/Heros_Marvel.vue";
-import ListHeros_Marvel from "../components/ListHeros_Marvel.vue";
-
+import Results from '../components/Results.vue'
 
 export default {
   components: {
-    Heros_Marvel,
-    ListHeros_Marvel,
+   Results
 
  }
 }
