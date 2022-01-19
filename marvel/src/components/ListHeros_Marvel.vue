@@ -1,17 +1,15 @@
 <template>
-  <div class="lista ">
+<div class="lista">
     <div>aqui va la lista de heroes</div>
- </div>
+</div>
 </template>
 
 <script>
-import axios from 'axios';
-
-
-
 
 export default {
-  name: 'ListHeros_Marvel',
-  
-}
+name: "ListHeros_Marvel",
+
+};
 </script>
+
+

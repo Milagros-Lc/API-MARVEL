@@ -5,9 +5,11 @@
 </template>
 
 <script>
+
 export default {
   name: 'Heroes',
-  
+    
 }
 </script>
+
 

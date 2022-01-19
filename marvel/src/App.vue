@@ -2,7 +2,7 @@
   <div id="app">
     <div id="nav">
       <div class="navbar-dark bg-dark p-1" href="#">
-        <router-link to="/" class="nav-link " aria-current="page"
+        <router-link to="/" class="nav-link" aria-current="page"
           ><img
             class="mx-auto d-block"
             src="./assets/logo_marvel_anonimo.jpg"
@@ -30,7 +30,7 @@
                 <router-link to="/" class="nav-link active">Inicio</router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/Heroes" class="nav-link ">Héroes</router-link>
+                <router-link to="/Heroes" @click="getHeros" class="nav-link">Héroes</router-link>
               </li>
             </ul>
             <form class="d-flex">
@@ -50,6 +50,29 @@
   <router-view />
 </template>
 
+
+
+
+
+<script>
+/* import axios from 'axios'; */
+const urlAPI =
+  "https://gateway.marvel.com:443/v1/public/characters?apikey=8db15b8ddd57ce424cfbd8ed525bd7f8";
+
+export default {
+  
+  methods: {
+    getHeros: function () {
+      console.log("acaaaaaaaaaaaaaaaaa");
+      fetch(urlAPI)
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json, "RES.JSON");
+        });
+    },
+  },
+};
+</script>
 
 
 
