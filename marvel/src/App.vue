@@ -127,8 +127,6 @@ export default {
                 <button type="button" data-id="${hero.id}" class="btn btn-primary btnupdate" data-bs-toggle="modal" data-bs-target="#exampleModal">
                  Actualizar </button>
 
-                            <p>holaaaaa: ${hero.id} </p>
-
                   </div>
 
                     `;
@@ -165,11 +163,11 @@ export default {
 };
 export { listar };
 </script>
-<style scoped>
+<style >
 nav {
   z-index: 100;
 }
-.descripcion {
+textarea {
   width: 100%;
   border: 0;
   outline: 0;
@@ -177,6 +175,7 @@ nav {
   background: transparent;
   resize: none;
   font-size: 1rem;
+
 }
 </style>
 
