@@ -1,11 +1,12 @@
 <template>
-  <div class="heroes" id="heros">
-    <h1>This is an HEROES page</h1>
-   
-   <Results></Results>
+ <div>
+  <h2 class="my-4 text-center ">¡Encuentra tu Héroe!</h2>
   </div>
+<div class=" m-2">  
+   <Results></Results>
+ </div>
 </template>
-<script>
+<script> 
 import Results from '../components/Results.vue'
 
 export default {

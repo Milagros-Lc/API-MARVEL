@@ -1,17 +1,16 @@
 <template>
-	<ul>
-		<Card v-for="item in results" :item="item" :key="item"/>
-		<li v-show="results.length===0 && term.length > 0">No Heroes</li>
-	</ul>
+	<div class="container d-flex flex-wrap justify-content-center">
+		<Card  v-for="item in results" :item="item" :key="item"/>
+    </div>
 </template>
 
 <script>
 	import Card from '../components/CardsHeros_Marvel.vue';
 	export default {
-  name: 'Search',
+  name: 'ResultsHeros_Marvel',
   props: {
     results: Array,
-    term: String
+    searchText: String
   },
       components: {
       Card

@@ -1,8 +1,8 @@
 t<template>
 	<h1>{{title}}</h1>
 	<Search :search-api="searchApi"/>
-	<Results :term="term" :results="results"/>
-	
+	<Results :searchText="searchText" :results="results"/>
+
 </template>
 
 <script>
@@ -19,22 +19,21 @@ t<template>
     },
         data(){
       return {
-        title: 'Marvel API Search',
         results: [],
-        term: ""
+        searchText: ""
       }
     },
     methods: {
-      searchApi(term){
-        this.term = term;
-        axios.get(`https://marvel---api.herokuapp.com/api/characters?name=${term}&limit=12`)
+      searchApi(searchText){
+        this.searchText = searchText;
+        axios.get(`https://marvel---api.herokuapp.com/api/characters?name=${searchText}&limit=12`)
         .then( (response)=> {
           console.log(response.data.results)
           this.results = response.data.results;
         })
         .catch( (error)=> {
           console.log(error);
-        }     
+        }
         );
 
       }
