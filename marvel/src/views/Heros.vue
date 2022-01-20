@@ -2,7 +2,7 @@
  <div>
   <h2 class="my-4 text-center ">¡Encuentra tu Héroe!</h2>
   </div>
-<div class=" m-2">  
+<div class=" contaiiner m-2">  
    <Results></Results>
  </div>
 </template>

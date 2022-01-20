@@ -37,10 +37,65 @@
     </div>
   </nav>
 
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label"
+                >Recipient:</label
+              >
+              <input type="text" class="form-control" id="recipient-name" />
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Message:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-dismiss="modal"
+            id="send"
+          >
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <router-view />
 </template>
 
 <script>
+let listar;
+
 const urlAPI =
   "https://gateway.marvel.com:443/v1/public/characters?limit=100&apikey=8db15b8ddd57ce424cfbd8ed525bd7f8";
 export default {
@@ -61,28 +116,67 @@ export default {
               dateString.getFullYear();
 
             contentHtml += `
-                <div class="row-sm-3">
-                    <div class="card" style="width: 18rem;">
+
+                    <div data-id="${hero.id}" class="card m-2 mt-3 contCard" style="width: 16rem;">
                         <img   src="${hero.thumbnail.path}.${hero.thumbnail.extension}" class="card-img-top" alt="...">
                     <div class="card-body">
                 <h5 class="card-title">${hero.name}</h5>
                   <p> ${dateDia}</p>
-                  <p> ${hero.description}</p>
+                  <textarea class="h-50 w-100 description" data-id="${hero.id}" > ${hero.description}</textarea>
                     </div>
+                <button type="button" data-id="${hero.id}" class="btn btn-primary btnupdate" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                 Actualizar </button>
+
+                            <p>holaaaaa: ${hero.id} </p>
+
                   </div>
-                </div>
+
                     `;
           }
+          listar = document.querySelector("#listar");
+          listar.innerHTML = contentHtml;
+          let btnupdate = document.querySelectorAll(".btnupdate");
+          let description = document.querySelectorAll(".description");
+          let messageText = document.querySelector("#message-text");
+          let send = document.querySelector("#send");
 
-          console.log(contentHtml);
+          btnupdate.forEach((btn) => {
+            btn.addEventListener("click", (btn) => {
+              description.forEach((des) => {
+                if (des.dataset.id == btn.target.dataset.id) {
+                  let contenido = des.value;
+                  console.log("contenido", contenido);
+                  messageText.value = contenido;
+                  send.addEventListener("click", () => {
+                    description.forEach((desc) => {
+                      if (desc.dataset.id == des.dataset.id) {
+                        des.value = messageText.value;
+                        
+                      }
+                    });
+                  });
+                }
+              });
+            });
+          });
         });
     },
   },
 };
+export { listar };
 </script>
 <style scoped>
 nav {
   z-index: 100;
+}
+.descripcion {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid #ccc;
+  background: transparent;
+  resize: none;
+  font-size: 1rem;
 }
 </style>
 

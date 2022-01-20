@@ -1,6 +1,6 @@
 <template>
-   <div  class="mt-5">
-    <div class="card mt-2 mx-4 " style="width: 16rem">
+  <div class="mt-5">
+    <div class="card mt-2 mx-4" style="width: 16rem">
       <img
         :src="image(item.thumbnail.path)"
         :title="item.name"

@@ -7,17 +7,11 @@
     </div>
   
   </section>
-    <Home_Marvel></Home_Marvel>
 
 </template>
 <script>
 
-import  Home_Marvel from '../components/Home_Marvel.vue'
-export default {
-components:{
-Home_Marvel
-  }
-}
+
 </script>
 <style>
 .header{
